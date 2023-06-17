@@ -27,6 +27,22 @@ app.post('/api/notes', (req, res) => {
     res.json(newNote);
   });
 
+  // Function to read notes from the JSON file
+function getNotes() {
+    const data = fs.readFileSync(path.join(__dirname, 'db', 'notes.json'), 'utf8');
+    return JSON.parse(data);
+  }
+  
+  // Function to save notes to the JSON file
+  function saveNotes(notes) {
+    const data = JSON.stringify(notes, null, 2);
+    fs.writeFileSync(path.join(__dirname, 'db', 'notes.json'), data);
+  }
+  
+  // Function to generate a unique ID for notes
+  function generateId() {
+    return Math.random().toString(36).substr(2, 9);
+  }
 
 
 
