@@ -1,6 +1,6 @@
 //Import modules and packages
 const express = require('express');
-const api = require('./routes/index')
+const apiRoutes = require('./routes/apiRoutes')
 const htmlRoutes = require('./routes/htmlRoutes')
 
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-app.use('/api', api);
+app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
 
